@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:todo_app/home_view.dart';
+import 'package:todo_app/utils.dart';
 
 
 void main() {
@@ -15,10 +16,10 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Todo App',
       theme: ThemeData(
-        appBarTheme:const AppBarTheme(
+        appBarTheme: AppBarTheme(
           backgroundColor: Colors.white,
-          iconTheme: IconThemeData(color: Colors.blue),
-          titleTextStyle: TextStyle(color: Colors.blue,fontWeight: FontWeight.w600, ), 
+          iconTheme: IconThemeData(color: customBlue),
+          titleTextStyle: TextStyle(color: customBlue, fontWeight: FontWeight.w600, ), 
         ),
         
       ),
@@ -30,7 +31,7 @@ class MyApp extends StatelessWidget {
           fontSize: 25 ),
         )
       ),
-      themeMode: ThemeMode.dark,
+      themeMode: ThemeMode.system,
       home: HomeView(),
     );
   }

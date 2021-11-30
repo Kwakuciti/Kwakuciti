@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:todo_app/utils.dart';
 
 class HomeView extends StatelessWidget {
   const HomeView({Key? key}) : super(key: key);
@@ -35,27 +36,29 @@ class HomeView extends StatelessWidget {
               const SizedBox(
                 width: 10,
               ),
-              Column(
-                mainAxisSize: MainAxisSize.min,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text('Plan a trip to Brazil',
-                      style: TextStyle(
-                        fontWeight: FontWeight.w600,
-                        color: Color.fromRGBO(37, 43, 103, 0),
-                      )),
-                      const SizedBox(
-                        height: 5,
-                      ),
-                      Text(
-                        'Chairman One',
-                        maxLines: 1,
-                        overflow: TextOverflow.ellipsis,
+              Expanded(
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text('Plan a trip to Brazil',
                         style: TextStyle(
-                          color: Colors.grey,fontSize: 16,
+                          fontWeight: FontWeight.w600,
+                          color: customBlue,
+                        )),
+                        const SizedBox(
+                          height: 5,
                         ),
-                      )
-                ],
+                        Text(
+                          'Chairman One.How are yo''Chairman One.How are you doing?'' ''u doing?'' ',
+                          maxLines: 3,
+                          overflow: TextOverflow.ellipsis,
+                          style: TextStyle(
+                            color: Colors.grey,fontSize: 16,
+                          ),
+                        )
+                  ],
+                ),
               ),
               const SizedBox(width: 15,),
               Row(
@@ -92,12 +95,27 @@ class SafeArea extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
       child: Material(
         borderRadius: BorderRadius.circular(10),
-        color: Color.fromRGBO(37, 43, 103, 1),
+        color: Color.fromRGBO(37, 43, 103, 0.4),
         child: Padding(
           padding: const EdgeInsets.all(15),
           child: Row(
+            
             children: [
-              Icon(Icons.check_circle_rounded),
+              Icon(Icons.check_circle_rounded,
+              color: customBlue
+              ),
+              const SizedBox(width: 10,),
+              Row(
+                children: [
+                  Text(
+                    'Completed',
+                   style: TextStyle(color: customBlue, fontWeight: FontWeight.w600),
+                   ),
+                   Icon(Icons.keyboard_arrow_down,color: customBlue,),
+                ],
+              ),
+              const Spacer(),
+               Text('24', style: TextStyle(color: customBlue),)
             ],
           ),
         ),
