@@ -68,6 +68,26 @@ Future<bool> deleteTodo(String id) async {
       isDeleted  = false;
     });
     return isDeleted = false;  
-  } 
-}
+  }
+
+    
+    // update Todo
+    Future<bool> updateTodo({required bool status, required String id}) async {
+  bool isupdate = false;
+  await _todoServices.updateTodoRequest(status: status,id: id).then((response) {
+    int statusCode = response.statusCode;
+    if (statusCode == 201) {
+      //success
+      isupdate = true;
+    } else {
+      // failure
+      isupdate = false;
+    }
+      
+    }).catchError((onError){
+      isupdate  = false;
+    });
+    return isupdate = false;  
  
+    }
+ }

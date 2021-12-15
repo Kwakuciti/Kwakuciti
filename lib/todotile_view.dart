@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:todo_app/utils.dart';
+import 'package:todo_app/models/todo.dart';
                          class TodoTileView extends StatelessWidget {
   const TodoTileView({
-    Key? key,
+    Key? key, required this.todo,
   }) : super(key: key);
-
+   final Datum todo;
   @override
   Widget build(BuildContext context) {
     return Card(
@@ -15,7 +16,7 @@ import 'package:todo_app/utils.dart';
           children: [
             Icon(
               Icons.check_circle_outline,
-              color: Colors.pink,
+              color: dateColor(todo.dateTime),
             ),
             const SizedBox(
               width: 10,
@@ -25,7 +26,8 @@ import 'package:todo_app/utils.dart';
                 mainAxisSize: MainAxisSize.min,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text('Plan a trip to Brazil',
+                  Text(
+                  todo.title,
                       style: TextStyle(
                         fontWeight: FontWeight.w600,
                         color: customBlue,
@@ -34,7 +36,7 @@ import 'package:todo_app/utils.dart';
                         height: 5,
                       ),
                       Text(
-                        'Chairman One.How are yo''Chairman One.How are you doing?'' ''u doing?'' ',
+                        todo.description,
                         maxLines: 3,
                         overflow: TextOverflow.ellipsis,
                         style: TextStyle(
@@ -48,7 +50,8 @@ import 'package:todo_app/utils.dart';
             Row(
               children: [
                 Icon(Icons.notifications,color: Colors.pink,),
-                Text('Yesterday', style: TextStyle(color: Colors.pink),)
+                Text(todo.dateTime,
+                 style: TextStyle(color: dateColor(todo.dateTime)),)
               ],
             )
             
