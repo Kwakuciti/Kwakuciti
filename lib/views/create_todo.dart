@@ -17,6 +17,8 @@ class _CreateToDoState extends State<CreateToDo> {
   final TextEditingController _dateController = TextEditingController();
   final GlobalKey<FormState> _formkey = GlobalKey();
   final TodoController _todoController = TodoController();
+
+  set isloading(bool isloading) {}
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -154,8 +156,35 @@ class _CreateToDoState extends State<CreateToDo> {
                         title: _timeController.text,
                          description: _descriptionController.text,
                           dateTime: dateTime);
-
+                          setState(() {
+                            isloading = false;
+                          });
+                      if (isSucessful) {
+                        // do something
+                        _titleController.clear();
+                        _descriptionController.clear();
+                        _dateController.clear();
+                        _timeController.clear();
+                        SnackBar snackBar = const SnackBar(content: Text('Todo created successfuliy',
+                        style: TextStyle(color: Colors.green),
+                        ));
+                          ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                      } else {
+                        //failed 
+                        SnackBar snackBar = const SnackBar(content: Text('Failed to create Todo',
+                        style: TextStyle(color: Colors.red),
+                        ));
+                        ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                      }
                   }
+                  else{
+                    SnackBar snackBar = const SnackBar(content: Text('All fields are requird',
+                    style:  TextStyle(color: Colors.blue),
+                    ));
+                    ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                  }
+                  
+
                 },
                 child: Text(
                   'Create To Do',
